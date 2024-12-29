@@ -3,101 +3,104 @@
 @tailwind utilities;
 
 :root {
-	--bgColor: #151A1F;
-	--maincolorback: rgba(29, 29, 35, 0.919);
-	--mainColor: rgba(44, 62, 80, 0.468);
-	--secondColor: rgb(75 85 99 / 0.7);
-	--thirdcolor: rgb(255 255 255 / 0.6);
-	--buttonColor: #2563eb;
-	--buttonColorHover: #1d4ed8;
-	--textColor: #ffffff;
-	--textColor2: rgb(156 163 175 / 1);
-	--buttonTextColor: var(--textColor);
-	--buttonHoverColor: red;
+  --bgColor: #151a1f;
+  --maincolorback: rgba(29, 29, 35, 0.919);
+  --mainColor: rgba(44, 62, 80, 0.468);
+  --hoverColor: rgba(44, 62, 80, 0.868);
+  --secondColor: rgb(75 85 99 / 0.7);
+  --thirdcolor: rgb(255 255 255 / 0.6);
+  --buttonColor: #2563eb;
+  --buttonColorHover: #1d4ed8;
+  --textColor: #ffffff;
+  --textColor2: rgb(156 163 175 / 1);
+  --buttonTextColor: var(--textColor);
+  --buttonHoverColor: red;
+}
+html {
+  height: 100%;
 }
 
 body {
-	height: 100%;
-	margin: 0;
-	padding: 0;
-	color: var(--thirdcolor);
-	background-color: var(--bgColor);
-	font-family: Arial, Helvetica, sans-serif;
-	font-size: 16px;
+  height: 100%;
+  margin: 0;
+  padding: 0;
+  color: var(--thirdcolor);
+  background-color: var(--bgColor);
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 16px;
 }
 
 * {
-	scrollbar-width: thin;
-	scrollbar-color: rgb(255 255 255 / 0.6) rgb(55 65 81 / 0.7);
+  scrollbar-width: thin;
+  scrollbar-color: #2563eb rgb(55 65 81 / 0.7);
 }
 
-
 .wBgColor {
-	background-color: var(--maincolorback);
+  background-color: var(--maincolorback);
 }
 
 .wBgColor2 {
-	background-color: var(--secondColor);
+  background-color: var(--secondColor);
 }
 
 .wText {
-	color: var(--textColor);
+  color: var(--textColor);
 }
 
 .wText2 {
-	color: var(--textColor2);
+  color: var(--textColor2);
 }
 
 .wButton {
-	background-color: var(--buttonColor);
-	color: var(--buttonTextColor);
-	border-radius: 5px;
-	padding: 10px 20px;
-	font-size: 16px;
-	transition: 0.3s ease-in-out;
+  background-color: var(--buttonColor);
+  color: var(--buttonTextColor);
+  border-radius: 5px;
+  padding: 10px 20px;
+  font-size: 16px;
+  transition: 0.3s ease-in-out;
 }
 
 .wButton:hover {
-	background-color: var(--buttonColorHover);
+  background-color: var(--buttonColorHover);
 }
 
 .wBlock {
-	background-color: var(--mainColor);
-	border-radius: 5px;
-	padding: 10px 20px;
-	font-size: 16px;
+  background-color: var(--mainColor);
+  border-radius: 5px;
+  padding: 10px 20px;
+  font-size: 16px;
 }
 
 .wContainer {
-	display: flex;
-	border-radius: 5px;
-	padding: 1.3em;
-	gap: 1em;
-	font-size: 16px;
+  display: flex;
+  border-radius: 5px;
+  padding: 1.3em;
+  gap: 1em;
+  font-size: 16px;
 }
 
 .wInput {
-	background-color: var(--mainColor);
-	border-radius: 5px;
-	padding: 10px 20px;
-	font-size: 16px;
-	color: var(--textColor);
+  background-color: var(--mainColor);
+  border-radius: 5px;
+  padding: 10px 20px;
+  font-size: 16px;
+  color: var(--textColor);
 }
 
 .wInput2 {
-	background-color: var(--secondColor);
-	border-radius: .4em;
-	padding: 10px 20px;
-	font-size: 16px;
-	color: var(--textColor);
+  background-color: var(--secondColor);
+  border-radius: 0.4em;
+  padding: 10px 20px;
+  font-size: 16px;
+  color: var(--textColor);
 }
 
 .wInput2::placeholder {
-	color: var(--textColor2);
+  color: var(--textColor2);
 }
 
 .wInput::placeholder {
-	color: var(--textColor2);
+  color: var(--textColor2);
 }
 
 @layer base {

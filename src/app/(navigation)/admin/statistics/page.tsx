@@ -127,7 +127,7 @@ export default function AdminDashboard() {
               <span>Додано новий експонат "Старовинна ваза"</span>
             </li>
             <li className="flex items-center">
-              <span className="w-4 h-4 bg-blue-500 rounded-full mr-3"></span>
+              <span className="w-4 h-4 bg-blue-600 rounded-full mr-3"></span>
               <span>Оновлено категорію "Стародавній Єгипет"</span>
             </li>
             <li className="flex items-center">

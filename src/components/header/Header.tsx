@@ -7,12 +7,12 @@ const iteams = [
         url: "/"
     },
     {
-        name: "Музей",
-        url: "/museum"
-    },
-    {
         name: "Експонати",
         url: "/exhibits"
+    },
+    {
+        name: "Колекції",
+        url: "/colections"
     },
     {
         name: "Виставки",

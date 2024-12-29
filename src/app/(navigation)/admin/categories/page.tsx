@@ -21,24 +21,10 @@ import {
   DialogTitle,
   DialogTrigger,
 } from "@/components/ui/dialog";
-import { Label } from "@/components/ui/label";
-import { Input } from "@/components/ui/input";
 import { listOfNews } from "@/services/EmployeeService";
 
 export default function Page() {
-  const router = useRouter();
   const [exhibits, setExhibits] = useState([]);
-  useEffect(() => {
-    async function getAllNews() {
-      try {
-        const response = await listOfNews();
-        return setExhibits(response.data);
-      } catch (error) {
-        console.error(error);
-      }
-    }
-    getAllNews();
-  }, []);
 
   const [searchTerm, setSearchTerm] = useState("");
   const [formData, setFormData] = useState({
@@ -51,6 +37,19 @@ export default function Page() {
     material: "",
     image: null,
   });
+
+  useEffect(() => {
+    async function getAllNews() {
+      try {
+        const response = await listOfNews();
+        return setExhibits(response.data);
+      } catch (error) {
+        console.error(error);
+      }
+    }
+    getAllNews();
+  }, []);
+
   const handleInputChange = (e) => {
     const { name, value } = e.target;
     setFormData((prev) => ({ ...prev, [name]: value }));
@@ -87,11 +86,13 @@ export default function Page() {
     }
   };
 
-  const filteredExhibits = exhibits.filter(
-    (exhibit) =>
-      exhibit.title.toLowerCase().includes(searchTerm.toLowerCase()) ||
-      exhibit?.category.toLowerCase().includes(searchTerm.toLowerCase())
-  );
+  const filteredExhibits =
+    exhibits &&
+    exhibits.filter(
+      (exhibit) =>
+        exhibit.title.toLowerCase().includes(searchTerm.toLowerCase()) ||
+        exhibit?.category.toLowerCase().includes(searchTerm.toLowerCase())
+    );
 
   const deleteExhibit = (id: number) => {
     setExhibits(exhibits.filter((exhibit) => exhibit.id !== id));
@@ -100,16 +101,16 @@ export default function Page() {
   return (
     <div className="text-white">
       <div className="flex justify-between items-center mb-8">
-        <h1 className="text-3xl font-bold">Управління експонатами</h1>
+        <h1 className="text-3xl font-bold">Управління категоріями</h1>
         <Dialog>
           <DialogTrigger asChild>
             <button className="bg-blue-500 text-white px-4 py-2 rounded-lg flex items-center hover:bg-blue-600 transition-colors">
-              <Plus className="mr-2" /> Додати експонат
+              <Plus className="mr-2" /> Додати категорію
             </button>
           </DialogTrigger>
           <DialogContent className="bg-[var(--maincolorback)] border-none">
             <DialogHeader>
-              <DialogTitle>Додати експонат</DialogTitle>
+              <DialogTitle>Додати категорію</DialogTitle>
             </DialogHeader>
             <form onSubmit={handleSubmit}>
               <div className="grid gap-4 py-4">
@@ -117,7 +118,7 @@ export default function Page() {
                   name="title"
                   value={formData.title}
                   onChange={handleInputChange}
-                  placeholder="Назва експонату"
+                  placeholder="Назва категорії"
                   className="bg-gray-800/50 border-none outline-none p-2 rounded-xl"
                 />
                 <input
@@ -187,7 +188,7 @@ export default function Page() {
           <div className="relative flex-grow">
             <input
               type="text"
-              placeholder="Пошук експонатів..."
+              placeholder="Пошук категорій..."
               value={searchTerm}
               onChange={(e) => setSearchTerm(e.target.value)}
               className="w-full p-2 pl-10 outline-none rounded-lg bg-gray-600"
@@ -246,13 +247,16 @@ export default function Page() {
                   <div className="rounded-xl p-2 flex flex-wrap m-1 my-0 bg-gray-600/25 hover:bg-gray-600/45 transition-all duration-150 ease-in-out">
                     <Dialog>
                       <DialogTrigger asChild>
-                        <button className="text-blue-500 flex hover:text-blue-700 mr-6">
+                        <button
+                          // onClick={() => null}
+                          className="text-blue-500 flex hover:text-blue-700 mr-6"
+                        >
                           <Edit className="inline mr-1" size={18} /> Редагувати
                         </button>
                       </DialogTrigger>
                       <DialogContent className="bg-[var(--maincolorback)] border-none">
                         <DialogHeader>
-                          <DialogTitle>Редагувати експонат</DialogTitle>
+                          <DialogTitle>Додати категорію</DialogTitle>
                         </DialogHeader>
                         <form onSubmit={handleSubmit}>
                           <div className="grid gap-4 py-4">
@@ -260,7 +264,7 @@ export default function Page() {
                               name="title"
                               value={formData.title}
                               onChange={handleInputChange}
-                              placeholder="Назва експонату"
+                              placeholder="Назва категорії"
                               className="bg-gray-800/50 border-none outline-none p-2 rounded-xl"
                             />
                             <input
@@ -324,6 +328,7 @@ export default function Page() {
                         </form>
                       </DialogContent>
                     </Dialog>
+
                     <button
                       onClick={() => deleteExhibit(exhibit.id)}
                       className="text-red-500 hover:text-red-700"
